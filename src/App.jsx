@@ -1,66 +1,22 @@
-// image dynamic
-import reactImage from './assets/react-core-concepts.png';
-import ComponentImg from './assets/components.png';
- import {CORE_CONCEPTS} from './data.js';
-
-// text dynamic
-const reactDescriptions = ['Fundamental','Crucial','Core'];
-function genRandomInt(max){
-  return  Math.floor(Math.random() * (max + 1));
-}
-function Header(){
-  // const description = reactDescriptions[genRandomInt(2)]
-  return(
-<header>
-        <img src={reactImage} alt="Stylized atom" />
-        <h1>React Essentials</h1>
-        <p>
-          {/* {description} React concepts you will need for almost any app you are
-          going to build! */}
-          {reactDescriptions[genRandomInt(2)]} React concepts you will need for almost any app you are
-          going to build! 
-        </p>
-      </header>
-  );
-}
-// function CoreConcept(props){
-  function CoreConcept({image,title,description}){
-  
-  return <li>
-    {/* <img src={props.image} alt=".." />
-    <h3>{props.title}</h3>
-    <p>{props.description}</p> */}
-    <img src={image} alt=".." />
-    <h3>{title}</h3>
-    <p>{description}</p> 
-  </li>
-}
+import {useState} from 'react';
+import CoreConcepts from './components/CoreConcept.jsx';
+// import {CORE_CONCEPTS} from './data.js';
+import Header from './components/Header/Header.jsx';
+// import TabButton from './components/TabButton.jsx';
+// import CoreConcept from './components/CoreConcepts.jsx';
+import Examples from './components/Example.jsx';
+import {EXAMPLES} from './data.js';
 function App() {
-  return (
-    <div>
-      <Header></Header>
-      <main>
-        <section id="core-concepts">
-<h2>Core Concepts</h2>
-<ul>
-  {/* <CoreConcept title="Components" description="The core Ui building bolck." image={ComponentImg}/>
-  <CoreConcept title="props"/>
-  <CoreConcept />
-  <CoreConcept /> */}
-  {/* <CoreConcept title={CORE_CONCEPTS[0].title} description={CORE_CONCEPTS[0].description} image={CORE_CONCEPTS[0].image}/>
-  <CoreConcept title={CORE_CONCEPTS[1].title} description={CORE_CONCEPTS[1].description} image={CORE_CONCEPTS[1].image}/>
-  <CoreConcept title={CORE_CONCEPTS[2].title} description={CORE_CONCEPTS[2].description} image={CORE_CONCEPTS[2].image}/>
-  <CoreConcept title={CORE_CONCEPTS[3].title} description={CORE_CONCEPTS[3].description} image={CORE_CONCEPTS[3].image}/> */}
-   <CoreConcept {...CORE_CONCEPTS[0]}/>
-   <CoreConcept {...CORE_CONCEPTS[1]}/>
-   <CoreConcept {...CORE_CONCEPTS[2]}/>
-   <CoreConcept {...CORE_CONCEPTS[3]}/>
-</ul>
-        </section>
-        <h2>Time to get started!</h2>
-      </main>
-    </div>
-  );
-}
 
+return (
+<div>
+   <Header></Header>
+   <main>
+      <CoreConcepts />
+      <h2>Time to get started!</h2>
+    <Examples/>
+   </main>
+</div>
+);
+}
 export default App;
